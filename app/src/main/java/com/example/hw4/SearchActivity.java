@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -68,29 +69,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v == buttonGTR) {
-            Intent searchIntent = new Intent(this, MainActivity.class);
-            startActivity(searchIntent);
-            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+            Intent returnIntent = new Intent(this, MainActivity.class);
+            startActivity(returnIntent);
+//            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
         } else if (v == buttonSearch) {
-            String bird = textViewBirdName.getText().toString();
-            String person = textViewPersonName.getText().toString();
-            String temp = editTextZipCode2.getText().toString();
-            int zip = Integer.parseInt(temp);
-
-             Bird b = new Bird(bird,zip,person);
-
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("Birds");
-
-
-
-            //String key = myRef.push().getKey();
-            Toast.makeText(this, b.birdname, Toast.LENGTH_SHORT).show();
-            myRef.push().setValue(b);
-        }
-
-
         }
     }
+}
 
 

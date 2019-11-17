@@ -1,3 +1,4 @@
+//I worked with Travis Wilkinson
 package com.example.hw4;
 
 import androidx.annotation.NonNull;
@@ -80,10 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("Birds");
-
-
-
-            //String key = myRef.push().getKey();
             Toast.makeText(this, b.birdname, Toast.LENGTH_SHORT).show();
             myRef.push().setValue(b);
         }
