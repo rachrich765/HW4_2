@@ -71,8 +71,40 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         if (v == buttonGTR) {
             Intent returnIntent = new Intent(this, MainActivity.class);
             startActivity(returnIntent);
-//            Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
         } else if (v == buttonSearch) {
+            String temp = editTextZipCode2.getText().toString();
+            int zip = Integer.parseInt(temp);
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("Birds");
+            myRef.orderByChild("zipcode").limitToLast(1).equalTo(zip).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                    textViewBirdName.setText(textViewBirdName.getText() + String.valueOf(dataSnapshot.getValue()));
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+                // ...
+            });
         }
     }
 }

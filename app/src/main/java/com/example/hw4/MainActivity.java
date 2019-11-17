@@ -1,4 +1,4 @@
-//I worked with Travis Wilkinson
+
 package com.example.hw4;
 
 import androidx.annotation.NonNull;
@@ -18,31 +18,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
     EditText editTextBirdName, editTextPersonName, editTextZipCode;
     Button buttonSubmit, buttonGTS;
-    // DatabaseReference myRef;
-    // FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Write a message to the database
-        //  database = FirebaseDatabase.getInstance();
-        // myRef = database.getReference();
-
-
         editTextBirdName = findViewById(R.id.editTextBirdName);
         editTextPersonName = findViewById(R.id.editTextPersonName);
         editTextZipCode = findViewById(R.id.editTextZipCode);
 
         buttonSubmit = findViewById(R.id.buttonSubmit);
-        buttonGTS = findViewById(R.id.buttonGTS);
-
-
         buttonSubmit.setOnClickListener(this);
+        buttonGTS = findViewById(R.id.buttonGTS);
         buttonGTS.setOnClickListener(this);
 
     }
